@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Reference",
+"class": "SpawnPointClass",
+"language": "GDScript",
+"path": "res://addons/spawn/SpawnPointClass.gd"
+} ]
 _global_script_class_icons={
-
+"SpawnPointClass": ""
 }
 
 [application]
