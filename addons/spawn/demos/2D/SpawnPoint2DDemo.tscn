@@ -5,13 +5,13 @@
 
 [node name="SpawnPoint2DDemo" type="Node2D"]
 
-[node name="SpawnPoint" parent="." instance=ExtResource( 1 )]
+[node name="SpawnPoint2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 67 )
 start_immediate = false
 new_wave_every_seconds = 5.0
 products = [ ExtResource( 2 ) ]
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="SpawnPoint"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="SpawnPoint2D"]
 margin_top = 40.0
 margin_right = 330.0
 margin_bottom = 63.0
@@ -20,14 +20,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpawnPoint2" parent="." instance=ExtResource( 1 )]
+[node name="SpawnPoint2D-2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 380 )
 new_wave_every_seconds = 1.0
 capacity = 100
 wave_size = 1
 products = [ ExtResource( 2 ) ]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpawnPoint2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpawnPoint2D-2"]
 margin_top = 40.0
 margin_right = 365.0
 margin_bottom = 66.0
