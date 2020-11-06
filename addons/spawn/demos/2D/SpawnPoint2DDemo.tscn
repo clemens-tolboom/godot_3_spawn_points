@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://addons/spawn/SpawnPoint.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/spawn/demos/But.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/spawn/SpawnPoint2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/spawn/demos/2D/But.tscn" type="PackedScene" id=2]
 
 [node name="SpawnPoint2DDemo" type="Node2D"]
 
@@ -22,9 +22,9 @@ __meta__ = {
 
 [node name="SpawnPoint2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 380 )
+new_wave_every_seconds = 1.0
 capacity = 100
 wave_size = 1
-new_wave_every_seconds = 1.0
 products = [ ExtResource( 2 ) ]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SpawnPoint2"]
