@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "SpawnPointClass",
 "language": "GDScript",
-"path": "res://addons/spawn/SpawnPointClass.gd"
+"path": "res://addons/spawn/src/SpawnPointClass.gd"
 } ]
 _global_script_class_icons={
 "SpawnPointClass": ""
