@@ -8,14 +8,14 @@
 [node name="SpawnPoint2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 67 )
 start_immediate = false
-new_wave_every_seconds = 5.0
+new_wave_every_seconds = 2.5
 products = [ ExtResource( 2 ) ]
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="SpawnPoint2D"]
 margin_top = 40.0
 margin_right = 330.0
 margin_bottom = 63.0
-text = "Spawns after 5 second  5 items every 5 second"
+text = "Spawns after 2.5 second  5 items every 2.5 second"
 __meta__ = {
 "_edit_use_anchors_": false
 }
