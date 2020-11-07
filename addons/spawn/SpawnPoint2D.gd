@@ -1,3 +1,5 @@
+class_name SpawnPoint2D, "res://addons/spawn/SpawnPoint2D.png"
+
 # Can tool cleanup the interface?
 # https://docs.godotengine.org/en/stable/tutorials/misc/running_code_in_the_editor.html#doc-running-code-in-the-editor
 # tool
@@ -35,10 +37,13 @@ func _on_Timer_timeout():
 	do_wave()
 
 func do_wave():
+	if not visible:
+		return
+
 	var items:Array = spawn_point.do_wave()
 
 	for p in items:
-		add_to_parent.add_child(p)
+		add_to_parent.call_deferred("add_child", p)
 
 		p.rect_position.x = position.x + rand_range(-20, 20)
 		p.rect_position.y = position.y + rand_range(-20, 20)

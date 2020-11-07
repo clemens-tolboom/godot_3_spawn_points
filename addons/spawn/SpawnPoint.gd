@@ -1,3 +1,5 @@
+class_name SpawnPoint, "res://addons/spawn/SpawnPoint.png"
+
 extends Spatial
 
 # Can tool cleanup the interface?
