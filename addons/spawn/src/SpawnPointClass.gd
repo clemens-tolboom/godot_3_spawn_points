@@ -1,15 +1,27 @@
 class_name SpawnPointClass
 
+# Generic helper for 2D and 3D
+
+# Number of units available in total
 var capacity = 50
+
+# Number of units to spawn every wave.
 var wave_size = 5
+
 var products
 
-var products_left: int = capacity
+var products_left:int
 
 func _init(prods, capacity, wave_size):
 	self.products = prods
-	self.wave_size = wave_size
+
+	config(capacity, wave_size)
+
+func config(capacity, wave_size):
 	self.capacity = capacity
+	self.wave_size = wave_size
+
+	products_left = capacity
 
 # No product types available
 func is_empty():
@@ -23,6 +35,7 @@ func get_wave_size():
 	return wave_size
 
 func do_wave() -> Array:
+	print_debug("Wave ", wave_size, " / ", products_left, " / ", capacity)
 	if is_empty():
 		return []
 
