@@ -1,37 +1,80 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/spawn/SpawnPoint2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/spawn/demos/2D/But.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/spawn/WaveManager2D.tscn" type="PackedScene" id=3]
 
 [node name="SpawnPoint2DDemo" type="Node2D"]
 
 [node name="SpawnPoint2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 30, 67 )
+position = Vector2( 30, 30 )
 start_immediate = false
 new_wave_every_seconds = 2.5
+capacity = 20
+place_products_into = NodePath("..")
 products = [ ExtResource( 2 ) ]
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="SpawnPoint2D"]
-margin_top = 40.0
-margin_right = 330.0
-margin_bottom = 63.0
-text = "Spawns after 2.5 second  5 items every 2.5 second"
+margin_left = 72.0
+margin_top = -1.0
+margin_right = 402.0
+margin_bottom = 64.0
+text = "Spawns:
+-  after 2.5 second
+-  5 items every 2.5 second
+- 20 in total"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SpawnPoint2D-2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 30, 380 )
+position = Vector2( 30, 200 )
 new_wave_every_seconds = 1.0
-capacity = 100
+capacity = 10
 wave_size = 1
+place_products_into = NodePath("..")
 products = [ ExtResource( 2 ) ]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SpawnPoint2D-2"]
-margin_top = 40.0
-margin_right = 365.0
-margin_bottom = 66.0
-text = "Spawns immediately one item every second"
+margin_left = 76.0
+margin_top = -15.0
+margin_right = 440.0
+margin_bottom = 47.0
+text = "Spawns:
+-  immediately
+-   item every 1.0 second
+- 10 in total"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SpawnPoint2D-3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 30, 350 )
+capacity = 5
+wave_size = 3
+place_products_into = NodePath("..")
+products = [ ExtResource( 2 ) ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpawnPoint2D-3"]
+margin_left = 73.0
+margin_top = -14.0
+margin_right = 472.0
+margin_bottom = 41.0
+text = "Spawns immediately 3 item every 2.0 second 5 in total
+then the WaveManager does 3 + 3 and 4 + 4 waves
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveManager2D" parent="SpawnPoint2D-3" instance=ExtResource( 3 )]
+waves = [ {
+"capacity": 6,
+"size": 3
+}, {
+"capacity": 8,
+"size": 4
+}, {
+"capacity": -1,
+"size": -1
+} ]
