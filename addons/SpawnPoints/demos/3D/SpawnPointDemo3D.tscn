@@ -1,19 +1,19 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://addons/spawn/SpawnPoint.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/spawn/demos/3D/Ball.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/spawn/demos/3D/Car.gd" type="Script" id=3]
-[ext_resource path="res://addons/spawn/demos/3D/BallGreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/SpawnPoints/SpawnPoint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/SpawnPoints/demos/3D/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/SpawnPoints/demos/3D/Car.gd" type="Script" id=3]
+[ext_resource path="res://addons/SpawnPoints/demos/3D/BallGreen.tscn" type="PackedScene" id=4]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.87451, 0.0666667, 0.0666667, 1 )
 
-[sub_resource type="QuadMesh" id=1]
+[sub_resource type="QuadMesh" id=2]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.0823529, 0.521569, 0.737255, 1 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 1, 1, 0.1 )
 
 [node name="SpawnPointDemo3D" type="Spatial"]
@@ -50,7 +50,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.596, 2, 0 )
 width = 0.5
 height = 0.1
 depth = 0.5
-material = SubResource( 4 )
+material = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="SpawnPoint" parent="Car" instance=ExtResource( 1 )]
@@ -62,9 +62,9 @@ transform = Transform( 10, 0, 0, 0, -4.37114e-07, 1, 0, -10, -4.37114e-08, 0, 0,
 
 [node name="CSGMesh" type="CSGMesh" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, -4.44089e-16, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 1 )
-material = SubResource( 2 )
+mesh = SubResource( 2 )
+material = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 [connection signal="item_placed" from="Car/SpawnPoint" to="Car" method="_on_SpawnPoint_item_placed"]
