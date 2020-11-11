@@ -2,6 +2,7 @@ tool
 class_name SpawnPoint2D, "res://addons/spawn/SpawnPoint2D.png"
 
 signal is_depleted(who)
+signal item_placed(item)
 
 extends Node2D
 
@@ -13,7 +14,7 @@ export (int) var wave_size = 5
 export (NodePath) var place_products_into
 export (Array, PackedScene) var products
 
-onready var add_to_parent = get_node(place_products_into)
+onready var node_to_place_products_into:Node2D = get_node(place_products_into)
 onready var timer:Timer = $Timer
 
 var spawn_point: SpawnPointClass
@@ -52,8 +53,7 @@ func do_wave():
 	var items:Array = spawn_point.do_wave()
 
 	for p in items:
-		add_to_parent.call_deferred("add_child", p)
+		node_to_place_products_into.call_deferred("add_child", p)
 
-		p.rect_position.x = position.x + rand_range(-20, 20)
-		p.rect_position.y = position.y + rand_range(-20, 20)
-
+		p.rect_position = global_position - node_to_place_products_into.global_position
+		emit_signal("item_placed", p)

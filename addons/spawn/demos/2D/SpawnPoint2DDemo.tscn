@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/spawn/SpawnPoint2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/spawn/demos/2D/But.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/spawn/WaveManager2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/spawn/demos/2D/Car.gd" type="Script" id=4]
+[ext_resource path="res://addons/spawn/demos/2D/Checkbox.tscn" type="PackedScene" id=5]
 
 [node name="SpawnPoint2DDemo" type="Node2D"]
 
@@ -50,7 +52,7 @@ __meta__ = {
 
 [node name="SpawnPoint2D-3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 350 )
-capacity = 5
+capacity = 6
 wave_size = 3
 place_products_into = NodePath("..")
 products = [ ExtResource( 2 ) ]
@@ -78,3 +80,33 @@ waves = [ {
 "capacity": -1,
 "size": -1
 } ]
+
+[node name="Car" type="Button" parent="."]
+margin_left = 54.0
+margin_top = 438.0
+margin_right = 86.0
+margin_bottom = 458.0
+text = "| Car >"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpawnPoint2D" parent="Car" instance=ExtResource( 1 )]
+new_wave_every_seconds = 1.0
+capacity = 10
+wave_size = 1
+place_products_into = NodePath("../..")
+products = [ ExtResource( 5 ) ]
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Car"]
+margin_top = 40.0
+margin_right = 360.0
+margin_bottom = 109.0
+text = "The car is dropping off 10 objects reacting on signal `item_places(item)` to adjust coordinates.
+
+The scene is the owner of the objects."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="item_placed" from="Car/SpawnPoint2D" to="Car" method="_on_SpawnPoint2D_item_placed"]
