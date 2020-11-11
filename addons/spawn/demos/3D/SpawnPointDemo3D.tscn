@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://addons/spawn/SpawnPoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/spawn/demos/3D/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/spawn/demos/3D/Car.gd" type="Script" id=3]
+[ext_resource path="res://addons/spawn/demos/3D/BallGreen.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.87451, 0.0666667, 0.0666667, 1 )
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -17,9 +22,10 @@ extents = Vector3( 1, 1, 0.1 )
 transform = Transform( 1, 0, 0, 0, 0.947891, 0.318595, 0, -0.318595, 0.947891, 0, 1.60121, 2.20038 )
 
 [node name="SpawnPoint" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47483, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.902502, 1.47483, 0.527088 )
 new_wave_every_seconds = 1.0
 wave_size = 1
+place_products_into = NodePath("..")
 products = [ ExtResource( 2 ) ]
 
 [node name="CSGTorus" type="CSGTorus" parent="SpawnPoint"]
@@ -30,6 +36,7 @@ ring_sides = 10
 
 [node name="SpawnPoint2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65414, 0.634445, -3.17343 )
+place_products_into = NodePath("..")
 products = [ ExtResource( 2 ) ]
 
 [node name="CSGTorus" type="CSGTorus" parent="SpawnPoint2"]
@@ -37,6 +44,18 @@ inner_radius = 0.05
 outer_radius = 0.4
 sides = 32
 ring_sides = 10
+
+[node name="Car" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.596, 2, 0 )
+width = 0.5
+height = 0.1
+depth = 0.5
+material = SubResource( 4 )
+script = ExtResource( 3 )
+
+[node name="SpawnPoint" parent="Car" instance=ExtResource( 1 )]
+place_products_into = NodePath("../..")
+products = [ ExtResource( 4 ) ]
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
 transform = Transform( 10, 0, 0, 0, -4.37114e-07, 1, 0, -10, -4.37114e-08, 0, 0, 0 )
@@ -48,3 +67,4 @@ material = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 shape = SubResource( 3 )
+[connection signal="item_placed" from="Car/SpawnPoint" to="Car" method="_on_SpawnPoint_item_placed"]

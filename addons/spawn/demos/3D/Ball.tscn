@@ -1,17 +1,18 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.415686, 0.0431373, 0.0431373, 1 )
 
-[sub_resource type="SphereShape" id=4]
-radius = 0.1
+[sub_resource type="SphereShape" id=2]
+margin = 0.001
+radius = 0.05
 
 [node name="Ball" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8557, 0 )
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 radius = 0.1
-material = SubResource( 3 )
+material = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
