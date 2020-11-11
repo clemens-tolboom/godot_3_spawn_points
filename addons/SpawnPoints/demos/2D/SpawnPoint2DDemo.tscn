@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://addons/spawn/SpawnPoint2D.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/spawn/demos/2D/But.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/spawn/WaveManager2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/spawn/demos/2D/Car.gd" type="Script" id=4]
-[ext_resource path="res://addons/spawn/demos/2D/Checkbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/SpawnPoints/SpawnPoint2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/SpawnPoints/demos/2D/But.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/SpawnPoints/WaveManager2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/SpawnPoints/demos/2D/Car.gd" type="Script" id=4]
+[ext_resource path="res://addons/SpawnPoints/demos/2D/Checkbox.tscn" type="PackedScene" id=5]
 
 [node name="SpawnPoint2DDemo" type="Node2D"]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SpawnPoint.png-d31c21860bb8de7624717f6ea974aab8.stex"
+path="res://.import/icon3D.png-8cc778bd43ffe1cee0dff9db6e3939fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/spawn/SpawnPoint.png"
-dest_files=[ "res://.import/SpawnPoint.png-d31c21860bb8de7624717f6ea974aab8.stex" ]
+source_file="res://assets/icon3D.png"
+dest_files=[ "res://.import/icon3D.png-8cc778bd43ffe1cee0dff9db6e3939fa.stex" ]
 
 [params]
 

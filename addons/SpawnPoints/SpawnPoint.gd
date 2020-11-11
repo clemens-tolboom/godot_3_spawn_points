@@ -1,4 +1,4 @@
-class_name SpawnPoint, "res://addons/spawn/SpawnPoint.png"
+class_name SpawnPoint, "res://addons/SpawnPoints/SpawnPoint.png"
 
 extends Spatial
 

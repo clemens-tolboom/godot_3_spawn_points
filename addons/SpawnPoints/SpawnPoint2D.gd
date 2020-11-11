@@ -1,5 +1,5 @@
 tool
-class_name SpawnPoint2D, "res://addons/spawn/SpawnPoint2D.png"
+class_name SpawnPoint2D, "res://addons/SpawnPoints/SpawnPoint2D.png"
 
 signal is_depleted(who)
 signal item_placed(item)
