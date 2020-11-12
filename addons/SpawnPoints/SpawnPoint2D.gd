@@ -55,5 +55,10 @@ func do_wave():
 	for p in items:
 		node_to_place_products_into.call_deferred("add_child", p)
 
-		p.rect_position = global_position - node_to_place_products_into.global_position
+		var pos:Vector2 = global_position - node_to_place_products_into.global_position
+		if p.get('rect_position') != null:
+			p.rect_position = pos
+		else:
+			p.global_position = pos
+
 		emit_signal("item_placed", p)
