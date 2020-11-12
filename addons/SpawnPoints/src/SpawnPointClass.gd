@@ -35,7 +35,6 @@ func get_wave_size():
 	return wave_size
 
 func do_wave() -> Array:
-	print_debug("Wave ", wave_size, " / ", products_left, " / ", capacity)
 	if is_empty():
 		return []
 
