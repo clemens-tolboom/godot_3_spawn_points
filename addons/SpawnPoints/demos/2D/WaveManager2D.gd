@@ -31,14 +31,15 @@ func _ready():
 		if waves[i].size < 0:
 			waves.remove(i)
 
-#func _get_configuration_warning():
-#	var p = get_parent()
-#	if (spawn_point == null && p == null):
-#		return "Parent must be a SpawnPoint2D"
+func _get_configuration_warning():
+	var p = get_parent()
+	if (spawn_point == null && not p is SpawnPoint2D):
+		return "Parent must be a SpawnPoint2D"
+	return ""
 
 func _process(delta):
 	if Engine.editor_hint:
-		# update_configuration_warning()
+		update_configuration_warning()
 		var add_empty:bool = waves.size()== 0
 		if (waves.size()> 0):
 			if spawn_point != null:
