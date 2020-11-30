@@ -14,52 +14,49 @@ export (Array, Dictionary) var waves = [
 ]
 
 var spawn_point: SpawnPoint2D
+var wave_manager: WaveManagerClass
 
 func _ready():
-	var p = get_parent()
-	if p is SpawnPoint2D:
-		spawn_point = p
-		spawn_point.connect("is_depleted", self, "_on_SpawnPoint2D_is_depleted")
-
-	if Engine.editor_hint:
+	if not has_valid_spawn_point():
 		return
 
-	# Remove the extra wave config added by the editor.
-	var indexes = range(waves.size())
-	indexes.invert()
-	for i in indexes:
-		if waves[i].size < 0:
-			waves.remove(i)
+	spawn_point = get_parent()
+
+	if Engine.editor_hint:
+		# We don't need a wavemanager object when editing
+		return
+
+	spawn_point.connect("is_depleted", self, "_on_SpawnPoint2D_is_depleted")
+
+	wave_manager = WaveManagerClass.new(waves)
+	wave_manager.cleanup_waves()
 
 func _get_configuration_warning():
-	var p = get_parent()
-	if (spawn_point == null && not p is SpawnPoint2D):
+	if not has_valid_spawn_point():
 		return "Parent must be a SpawnPoint2D"
 	return ""
+
+func has_valid_spawn_point() -> bool:
+	var p = get_parent()
+	return p is SpawnPoint2D || not spawn_point == null
 
 func _process(delta):
 	if Engine.editor_hint:
 		update_configuration_warning()
-		var add_empty:bool = waves.size()== 0
-		if (waves.size()> 0):
-			if spawn_point != null:
-				spawn_point.wave_size = waves[0].size
-				spawn_point.capacity = waves[0].capacity
-			var params:Dictionary = waves[waves.size()- 1]
-			if params.has("size") and params.size != -1:
-				add_empty = true
-		if add_empty:
-			waves.push_back({"size": -1, "capacity": -1})
+		# Static call
+		WaveManagerClass.add_empty(waves)
+
+		# Sync SpawnPoint with first wave data
+		if has_valid_spawn_point():
+			var p = get_parent()
+			p.wave_size = waves[0].size
+			p.capacity = waves[0].capacity
 
 func config_spawn_point():
-	if waves.size() > 0:
-		var config = waves.pop_front()
-		spawn_point.config(config.capacity, config.size)
+	wave_manager.config_spawn_point(spawn_point)
 
 func _on_SpawnPoint2D_is_depleted(who):
 	if who != spawn_point:
-		return
-	if waves.size() == 0:
 		return
 
 	config_spawn_point()
