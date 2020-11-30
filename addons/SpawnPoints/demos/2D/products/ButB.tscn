@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/SpawnPoints/demos/2D/products/But.tscn" type="PackedScene" id=1]
+
+[node name="But" instance=ExtResource( 1 )]
+text = "B"

@@ -13,6 +13,5 @@ func _on_SpawnPoint2D_item_placed(item):
 	item.rect_position.x += rand_range(-20, 20)
 	item.rect_position.y += rand_range(-20, 20)
 
-
 func _on_SpawnPoint2D_is_depleted(who):
 	vel = Vector2.ZERO

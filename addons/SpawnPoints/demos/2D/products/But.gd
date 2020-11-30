@@ -3,6 +3,7 @@ extends Button
 
 
 func _process(delta):
+	# Move to the right
 	set_global_position(get_global_transform().origin + Vector2(1,0))
 
 
