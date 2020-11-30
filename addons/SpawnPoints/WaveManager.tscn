@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/SpawnPoints/WaveManager.gd" type="Script" id=1]
+
+[node name="WaveManager2D" type="Node2D"]
+script = ExtResource( 1 )
+waves = [ {
+"capacity": 10,
+"size": 3
+}, {
+"capacity": 6,
+"size": 2
+}, {
+"capacity": -1,
+"size": -1
+} ]
