@@ -24,10 +24,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/SpawnPoints/src/SpawnPointClass.gd"
 }, {
+"base": "Node",
+"class": "WaveManager",
+"language": "GDScript",
+"path": "res://addons/SpawnPoints/WaveManager.gd"
+}, {
 "base": "Node2D",
 "class": "WaveManager2D",
 "language": "GDScript",
-"path": "res://addons/SpawnPoints/demos/2D/WaveManager2D.gd"
+"path": "res://addons/SpawnPoints/WaveManager2D.gd"
 }, {
 "base": "Reference",
 "class": "WaveManagerClass",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "SpawnPoint": "res://addons/SpawnPoints/SpawnPoint.png",
 "SpawnPoint2D": "res://addons/SpawnPoints/SpawnPoint2D.png",
 "SpawnPointClass": "",
+"WaveManager": "",
 "WaveManager2D": "",
 "WaveManagerClass": ""
 }
