@@ -4,7 +4,7 @@ This is the Godot 3.2+ version of SpawnPoints.
 
 ## Description
 
-With SpawnPoints you can spawn your product (enemies, friends, goodies, etcetera) from a SpawnPoint node. The are both 3D and 2D nodes to help you with spawning.
+With SpawnPoints you can spawn your product (enemies, friends, goodies, etcetera) from a SpawnPoint node. There are both 3D and 2D nodes to help you with spawning.
 
 ### Wave
 
@@ -14,7 +14,7 @@ The product of each wave as randomly selected from the configured products.
 
 ### WavesManager
 
-By adding a WaveManager as a child of the SpawnPoint you can add additional wave configurations make your game more interesting.
+By adding a WaveManager as a child of the SpawnPoint you can add additional waves configurations make your game more interesting.
 
 ## Demos
 
