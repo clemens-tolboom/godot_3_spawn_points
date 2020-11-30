@@ -1,10 +1,9 @@
-tool
 class_name SpawnPoint2D, "res://addons/SpawnPoints/SpawnPoint2D.png"
+
+extends Node2D
 
 signal is_depleted(who)
 signal item_placed(item)
-
-extends Node2D
 
 export (bool) var start_immediate = true
 export (float) var new_wave_every_seconds = 2.0
@@ -20,9 +19,6 @@ onready var timer:Timer = $Timer
 var spawn_point: SpawnPointClass
 
 func _ready():
-	if Engine.editor_hint:
-		return
-
 	spawn_point = SpawnPointClass.new(products, capacity, wave_size)
 
 	timer.set_wait_time(new_wave_every_seconds)
