@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/SpawnPoints/SpawnPoint2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/SpawnPoints/demos/2D/But.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/SpawnPoints/WaveManager2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/SpawnPoints/demos/2D/Car.gd" type="Script" id=4]
 [ext_resource path="res://addons/SpawnPoints/demos/2D/Checkbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/SpawnPoints/demos/2D/SpawnPoint2DDemo.gd" type="Script" id=6]
 
 [node name="SpawnPoint2DDemo" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="SpawnPoint2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 30 )
@@ -31,9 +33,9 @@ __meta__ = {
 
 [node name="SpawnPoint2D-2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 200 )
-new_wave_every_seconds = 1.0
+new_wave_every_seconds = 2.0
 capacity = 10
-wave_size = 1
+wave_size = 2
 place_products_into = NodePath("..")
 products = [ ExtResource( 2 ) ]
 
@@ -44,7 +46,7 @@ margin_right = 440.0
 margin_bottom = 47.0
 text = "Spawns:
 -  immediately
--   item every 1.0 second
+- 2  items every 1.0 second
 - 10 in total"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -52,7 +54,7 @@ __meta__ = {
 
 [node name="SpawnPoint2D-3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 350 )
-capacity = 6
+capacity = 5
 wave_size = 3
 place_products_into = NodePath("..")
 products = [ ExtResource( 2 ) ]
@@ -62,8 +64,7 @@ margin_left = 73.0
 margin_top = -14.0
 margin_right = 472.0
 margin_bottom = 41.0
-text = "Spawns immediately 3 item every 2.0 second 5 in total
-then the WaveManager does 3 + 3 and 4 + 4 waves
+text = "Spawns immediately every 2.0 second dictated by WaveManager 3 + 2 (5)  then  3 + 3 (6) and 4 + 4 (8)
 "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -71,6 +72,9 @@ __meta__ = {
 
 [node name="WaveManager2D" parent="SpawnPoint2D-3" instance=ExtResource( 3 )]
 waves = [ {
+"capacity": 5,
+"size": 3
+}, {
 "capacity": 6,
 "size": 3
 }, {
@@ -101,12 +105,15 @@ products = [ ExtResource( 5 ) ]
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Car"]
 margin_top = 40.0
-margin_right = 360.0
-margin_bottom = 109.0
+margin_right = 636.0
+margin_bottom = 126.0
 text = "The car is dropping off 10 objects reacting on signal `item_places(item)` to adjust coordinates.
 
-The scene is the owner of the objects."
+The scene is the owner of the objects.
+
+The car stops when SpawnPoint is depleted."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="is_depleted" from="Car/SpawnPoint2D" to="Car" method="_on_SpawnPoint2D_is_depleted"]
 [connection signal="item_placed" from="Car/SpawnPoint2D" to="Car" method="_on_SpawnPoint2D_item_placed"]
